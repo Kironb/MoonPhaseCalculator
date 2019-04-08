@@ -1,0 +1,240 @@
+#Astronomy Project
+
+import turtle
+wn = turtle.Screen()
+k = turtle.Turtle()
+wn.bgcolor("black")
+k.ht()
+k.color("gray")
+k.pensize(3)
+k.penup()
+k.goto(-170,0)
+k.pendown()
+k.write("Please look at the Python Shell.", font=("Arial", 20, "normal"))
+k.pensize(1)
+
+print("Welcome to the moon calculator! Please enter the the following information.")
+
+month = input("Please enter a month: ")
+day = int(input("Please enter a day: "))
+year = int(input("Please enter a year: "))
+
+while day > 31 or day < 1:
+    print("I do not recognize that day as possible, please re-enter the date.")
+    day = int(input("Please enter a day: "))
+
+
+
+m = 0
+totalDays = day
+leapTest = year
+
+extraDay = 0
+while leapTest > 4:
+    leapTest -= 4
+if (leapTest) == 4:
+    extraDay = 1
+    
+leapTest2 = year
+while leapTest2 >= 400:
+    leapTest2 = leapTest2/400
+while leapTest2 > 1:
+    leapTest2 -= 1
+if leapTest2 == 1:
+    extraDay = 1
+
+
+if year >= 2017:
+    year = year - 2017
+
+year = year * 365
+totalDays += year
+
+while m == 0:
+    if month.lower() == "february" or month == "2":
+        totalDays += 31
+        m = 1
+    elif month.lower() == "march" or month == "3":
+        totalDays += 59 + extraDay
+        m = 1
+    elif month.lower() == "april" or month == "4":
+        totalDays += 90
+        m = 1
+    elif month.lower() == "may" or month == "5":
+        totalDays += 120 
+        m = 1
+    elif month.lower() == "june" or month == "6":
+        totalDays += 151 
+        m = 1
+    elif month.lower() == "july" or month == "7":
+        totalDays += 181 
+        m = 1
+    elif month.lower() == "august" or month ==  "8":
+        totalDays += 212 
+        m = 1
+    elif month.lower() == "september" or month ==  "9":
+        totalDays += 243 
+        m = 1
+    elif month.lower() == "october" or month == "10":
+        totalDays += 273 
+        m = 1
+    elif month.lower() == "november" or month == "11":
+        totalDays += 303 
+        m = 1
+    elif month.lower() == "december" or month == "12":
+        totalDays += 334
+        m = 1
+    elif month.lower() == "january" or month == "1":
+        totalDays += 0 
+        m = 1
+    else:
+        print("I do not recognize that month")
+        month = input("Please re-enter a month: ")
+
+
+
+while totalDays > 27:
+    totalDays -= 29.53
+
+test = totalDays
+while test >= 1:
+    test -= 1
+    
+if test >= .5:
+    totalDays += 1
+    totalDays = int(totalDays)
+if test < .5:
+    totalDays = int(totalDays)
+    
+if totalDays < .5:
+    totalDays = 1
+
+
+totalDays = int(totalDays)
+
+k.clear()
+
+if totalDays == 12:
+    k.right(90)
+    k.penup()
+    k.goto(0,150)
+    k.pendown()
+    k.begin_fill()
+    k.setheading(180)
+    k.circle(75)
+    k.end_fill()
+    k.penup()
+    k.goto(-60,-50)
+    k.pensize(3)
+    k.write("Full Moon", font=("Arial", 20, "normal")) 
+if totalDays == 13 or totalDays == 14 or totalDays == 15 or totalDays == 16 or totalDays == 17 or totalDays == 18 :
+    k.penup()
+    k.goto(0,150)
+    k.pendown()
+    k.setheading(180)
+    k.begin_fill()
+    for i in range(180):
+        k.left(1)
+        k.forward(1.5)
+    k.penup()
+    k.forward(-20)
+    k.pendown()
+    for i in range(180):
+        k.left(1)
+        k.forward(1.5)
+    k.end_fill()
+    k.penup()
+    k.goto(-60,-50)
+    k.pensize(3)
+    k.write("Waxing Gibbus", font=("Arial", 20, "normal"))
+if totalDays == 19:
+    k.right(90)
+    k.begin_fill()
+    k.goto(0,150)
+    k.setheading(180)
+    k.circle(75,180)
+    k.end_fill()
+    k.penup()
+    k.goto(-60,-50)
+    k.pensize(3)
+    k.write("Third Quarter", font=("Arial", 20, "normal")) 
+if totalDays == 20 or totalDays == 21 or totalDays == 22 or totalDays == 23 or totalDays == 24 or totalDays == 25 or totalDays == 26:
+    k.penup()
+    k.goto(0,150)
+    k.pendown()
+    k.setheading(180)
+    k.begin_fill()
+    for i in range(180):
+        k.left(1)
+        k.forward(1.5)
+    k.forward(-20)
+    k.setheading(-180)
+    for i in range(180):
+        k.right(1)
+        k.forward(1.5)
+    k.end_fill()
+    k.penup()
+    k.goto(-60,-50)
+    k.pensize(3)
+    k.write("Waning Crescent", font=("Arial", 20, "normal"))
+if totalDays == 27:
+    k.penup()
+    k.goto(-60,0)
+    k.pensize(3)
+    k.write("New Moon", font=("Arial", 20, "normal")) 
+if totalDays == 1 or totalDays == 2 or totalDays == 3 or totalDays == 4:
+    k.penup()
+    k.goto(0,150)
+    k.pendown()
+    k.setheading(0)
+    k.begin_fill()
+    for i in range(180):
+        k.right(1)
+        k.forward(1.5)
+    k.forward(-20)
+    k.setheading(0)
+    for i in range(180):
+        k.left(1)
+        k.forward(1.5)
+    k.end_fill()
+    k.penup()
+    k.goto(-60,-50)
+    k.pensize(3)
+    k.write("Waxing Crescent", font=("Arial", 20, "normal"))
+if totalDays == 5:
+    k.right(90)
+    k.begin_fill()
+    k.goto(0,150)
+    k.setheading(0)
+    k.circle(-75,180)
+    k.end_fill()
+    k.penup()
+    k.goto(-60,-50)
+    k.pensize(3)
+    k.write("First Quarter", font=("Arial", 20, "normal")) 
+if totalDays == 6 or totalDays == 7 or totalDays == 8 or totalDays == 9 or totalDays == 10 or totalDays == 11:
+    k.penup()
+    k.goto(0,150)
+    k.pendown()
+    k.setheading(0)
+    k.begin_fill()
+    for i in range(180):
+        k.right(1)
+        k.forward(1.5)
+    k.penup()
+    k.forward(-20)
+    k.pendown()
+    for i in range(180):
+        k.right(1)
+        k.forward(1.5)
+    k.end_fill()
+    k.penup()
+    k.goto(-60,-50)
+    k.pensize(3)
+    k.write("Waxing Gibbus", font=("Arial", 20, "normal"))
+
+
+
+wn.exitonclick()
+
+
